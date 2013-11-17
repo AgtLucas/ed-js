@@ -42,6 +42,46 @@ function partition(items, left, right) {
 
     // Enquanto os 2 indices não são iguais
     while (i <= j) {
-      i++;
+
+      // Se o item da esquerda é menor que o pivot, continua pra direita
+      while (items[i] < pivot) {
+        i++;
+      }
+
+      // Se o item da direita for maior que o pivot, continua pra esquerda
+      while (items[j] > pivot) {
+        j--;
+      }
+
+      // Se os 2 indices ainda não são iguais, inverte o valor
+      if (i <= j) {
+        swap(items, i, j);
+
+        // Muda os indices para continuar o loop
+        i++;
+        j--;
+      }
+
     }
+
+    // Necessário para recursão
+    return i;
+}
+
+/**
+ * A quicksort implementation in JavaScript. The array
+ * is sorted in place.
+ * @param {Array} items An array of items to sort.
+ * @return {Array} The sorted array.
+ */
+
+function quickSort(items, left, right) {
+  var index;
+
+  // #perfmatters - Não ordena um array com 0 ou 1 item
+  if (items.length > 1) {
+    // Corrigi os valores da esquerda e direita
+    left = typeof left != "number" ? 0 : left;
+    right = typeof right != "number" ? items.length - 1 : right;
+  }
 }
