@@ -80,8 +80,21 @@ function quickSort(items, left, right) {
 
   // #perfmatters - Não ordena um array com 0 ou 1 item
   if (items.length > 1) {
-    // Corrigi os valores da esquerda e direita
+    // Corrige os valores da esquerda e direita
     left = typeof left != "number" ? 0 : left;
     right = typeof right != "number" ? items.length - 1 : right;
+
+    // Divide o array
+    index = partition(items, left, right);
+
+    // Se retornado o index
+    if (left < index - 1) {
+      quickSort(items, left, index - 1);
+    }
+
+    if (index < right) {
+      quickSort(items, index, right);
+    }
   }
+  return items;
 }
