@@ -29,8 +29,19 @@
  * @return {void}
  */
 
- function swap(items, firstIndex, secondIndex) {
-   var temp = items[firstIndex];
-   items[firstIndex] = items[secondIndex];
-   items[secondIndex] = temp;
- }
+function swap(items, firstIndex, secondIndex) {
+  var temp = items[firstIndex];
+  items[firstIndex] = items[secondIndex];
+  items[secondIndex] = temp;
+}
+
+function partition(items, left, right) {
+  var pivot = items[Math.floor((right + left) / 2)], // valor do pivot é o item do meio
+    i     = left,  // Começa da esquerda e vai para direita para o index do pivot
+    j     = right; // Começa da direita e vai para esquerda para o index do pivot
+
+    // Enquanto os 2 indices não são iguais
+    while (i <= j) {
+      i++;
+    }
+}
