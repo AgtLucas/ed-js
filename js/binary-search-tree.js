@@ -1,17 +1,17 @@
 /*
  * Binary Search Tree implementation in JavaScript
  * Copyright (c) 2009 Nicholas C. Zakas
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,3 +28,115 @@
  * @class BinarySearchTree
  * @constructor
  */
+function BinarySearchTree() {
+
+  /**
+   * Pointer to root node in the tree.
+   * @property _root
+   * @type Object
+   * @private
+   */
+  this._root = null;
+}
+
+BinarySearchTree.prototype = {
+
+  // restore constructor
+  constructor: BinarySearchTree,
+
+  //-------------------------------------------------------------------------
+  // Private members
+  //-------------------------------------------------------------------------
+
+  /**
+   * Appends some data to the appropriate point in the tree. If there are no
+   * nodes in the tree, the data becomes the root. If there are other nodes
+   * in the tree, then the tree must be traversed to find the correct spot
+   * for insertion.
+   * @param {variant} value The data to add to the list.
+   * @return {Void}
+   * @method add
+   */
+  add: function(value) {
+
+    // cria um novo objeto, coloca dados nele
+    var node = {
+      value: value,
+      left: null,
+      right: null
+    },
+
+    // usado para atravessar a estrutura
+    current;
+
+    // Se não tiver itens na árvore ainda.
+    if (this._root === null) {
+      this._root = node;
+    } else {
+      current = this._root;
+
+      while (true) {
+
+        // se o novo valor for menor que o valor do nó, vai para esquerda
+        if (value < current.value) {
+
+          // se não existir esquerda, então o novo nó pertence a esquerda
+          if (current.left === null) {
+            current.left = node;
+            break;
+          } else {
+            current = current.left;
+          }
+
+        // Se o novo valor for maior que o valor do nó, vai para a direita
+        } else if (value > current.value) {
+
+          // se não existir direita, então o novo nó pertence a direita
+          if (current.right === null) {
+            current.right = node;
+            break;
+          } else {
+            current = current.right;
+          }
+
+        // se o novo valor for igual ao valor atual, ignore-o
+        } else {
+            break;
+        }
+      }
+    }
+  },
+
+  /**
+   * Determines if the given value is present in the tree.
+   * @param {variant} value The value to find.
+   * @return {Boolean} True if the value is found, false if not.
+   * @method contains
+   */
+  contains: function(value) {
+
+    var found   = false,
+        current = this._root;
+
+    // verifica se realmente há um no para procurar
+    while (!found && current) {
+
+      // se o valor é menor que o nó atual, vai para esquerda
+      if (value < current.value) {
+        current = current.left;
+
+      // se o valor é maior que o nó atual, vai para direita
+      } else if (value > current.value) {
+        current = current.right;
+
+      // valores são iguais, encontrado
+      } else {
+        found = true;
+      }
+    }
+
+    // retorna apenas se o nó for encontrado
+    return found;
+  }
+
+};
