@@ -139,4 +139,25 @@ BinarySearchTree.prototype = {
     return found;
   }
 
+  // /**
+  //  * Removes the node with the given value from the tree. This may require
+  //  * moving around some nodes so that the binary search tree remains
+  //  * properly balanced.
+  //  * @param {variant} value The value to remove.
+  //  * @return {void}
+  //  * @method remove
+  //  */
+  // remove: function(value) {
+
+  //   var found       = false,
+  //       parent      = null,
+  //       current     = this._root,
+  //       childCount,
+  //       replacement,
+  //       replacementParent;
+
+  //   // certifica-se se há um nó para procurar
+  //   while(!found && current)
+  // }
+
 };
