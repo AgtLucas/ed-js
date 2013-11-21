@@ -171,6 +171,27 @@ BinarySearchTree.prototype = {
     }
 
     // prossiga se o nó foi encontrado
+    if (found) {
+
+      // descobre quantos filhos o nó tem
+      childCount = (current.left !== null ? 1 : 0) + (current.right !== null ? 1 : 0);
+
+      // special case: o var está no nó
+      if (current === this._root) {
+        switch(childCount) {
+
+          // sem filhos, apaga o nó
+          case 0:
+            this._root = null;
+            break;
+
+          // 1 filho, use 1 como o nó
+          case 1:
+            this._root = null;
+            break;
+        }
+      }
+    }
   }
 
 };
