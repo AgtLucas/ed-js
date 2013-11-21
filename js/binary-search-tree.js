@@ -139,25 +139,38 @@ BinarySearchTree.prototype = {
     return found;
   }
 
-  // /**
-  //  * Removes the node with the given value from the tree. This may require
-  //  * moving around some nodes so that the binary search tree remains
-  //  * properly balanced.
-  //  * @param {variant} value The value to remove.
-  //  * @return {void}
-  //  * @method remove
-  //  */
-  // remove: function(value) {
+  /**
+   * Removes the node with the given value from the tree. This may require
+   * moving around some nodes so that the binary search tree remains
+   * properly balanced.
+   * @param {variant} value The value to remove.
+   * @return {void}
+   * @method remove
+   */
+  remove: function(value) {
 
-  //   var found       = false,
-  //       parent      = null,
-  //       current     = this._root,
-  //       childCount,
-  //       replacement,
-  //       replacementParent;
+    var found       = false,
+        parent      = null,
+        current     = this._root,
+        childCount,
+        replacement,
+        replacementParent;
 
-  //   // certifica-se se há um nó para procurar
-  //   while(!found && current)
-  // }
+    // certifica-se se há um nó para procurar
+    while(!found && current) {
+
+      // se o valor é menor que o valor do nó atual, vai para esquerda
+      if (value < current.value) {
+        parent = current;
+        current = current.left;
+
+      // se o valor é maior que o valor do nó atual, vai para direita
+      } else if {
+          found = true;
+      }
+    }
+
+    // prossiga se o nó foi encontrado
+  }
 
 };
