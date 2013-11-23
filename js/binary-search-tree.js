@@ -201,9 +201,27 @@ BinarySearchTree.prototype = {
               replacement = replacement.right;
             }
 
-            //
+            // não é o primeiro nó na esqueda
+            if (replacementParent !== null) {
+
+              // remove o novo root da posição anterior
+              replacementParent.right = replacement.left;
+
+              // novo root recebe todos os filhos do antigo root
+              replacement.right = this._root.right;
+              replacement.left = this_root.left;
+            } else {
+
+              // apenas atribui os filhos
+              replacement.right = this._root.right;
+            }
+
+            // oficialmente atribui o novo root
+            this._root = replacement;
         }
+
       }
+
     }
   }
 
