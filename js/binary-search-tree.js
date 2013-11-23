@@ -189,6 +189,19 @@ BinarySearchTree.prototype = {
           case 1:
             this._root = null;
             break;
+
+          // 2 filhos
+
+            // novo nó será o nó velho da filho da esquerda, talvez
+            replacament = this._root.left;
+
+            // encontra o ramo de nós mais a direita do novo root
+            while (replacement.right !== null) {
+              replacementParent = replacement;
+              replacement = replacement.right;
+            }
+
+            //
         }
       }
     }
