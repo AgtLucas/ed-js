@@ -220,8 +220,59 @@ BinarySearchTree.prototype = {
             this._root = replacement;
         }
 
-      }
+      // valores non-root
+      } else {
+          switch (childCount) {
 
+            // sem filhos, apenas remove o pai
+            case 0:
+              // se o valor atual é menor que o valor do pai, reset o ponteiro da esquerda
+              if (current.value < parent.value) {
+                parent.left = null;
+                // se o valor atual é maior que o valor do pai, ponteiro da direita fica nulo
+              } else {
+                parent.right = null;
+              }
+              break;
+
+            // 1 filho, apenas redesigna o pai
+            case 1:
+              // se o valor atual é menor que o valor do pai, reseta o ponteiro da esquerda
+              if (current.value < parent.value) {
+                parent.left = (current.left === null ? current.right : current.left);
+
+              // se o valor atual é maior que o valor do pai, reseta o ponteiro da direita
+              } else {
+                parent.right = (current.left === ? current.right : current.left);
+              }
+              break;
+
+            // 2 filhos, um pouco mais complicado
+            case 2:
+              // reseta os ponteiros
+              replacement = current.left;
+              replacementParent = current;
+
+              // encontra o nó mais a direita
+              while(replacement.right !== null) {
+                replacementParent = replacement;
+                replacement = replacement.right;
+              }
+
+              replacementParent.right = replacement.left;
+
+              // atribui os filhos para a substituição
+              replacement.right = current.right;
+              replacement.left = current.left;
+
+              // coloca a substituição no lugar certo
+              if (current.value < parent.value) {
+                parent.left = replacement;
+              } else {
+                parent.right = replacement;
+              }
+          }
+      }
     }
   }
 
