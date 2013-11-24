@@ -165,8 +165,13 @@ BinarySearchTree.prototype = {
         current = current.left;
 
       // se o valor é maior que o valor do nó atual, vai para direita
-      } else if {
-          found = true;
+      } else if (value > current.value) {
+          parent = current;
+          current = current.right;
+
+      // valores são iguais, encontrado
+      } else {
+        found = true;
       }
     }
 
@@ -191,7 +196,7 @@ BinarySearchTree.prototype = {
             break;
 
           // 2 filhos
-
+          case 2:
             // novo nó será o nó velho da filho da esquerda, talvez
             replacament = this._root.left;
 
@@ -243,7 +248,7 @@ BinarySearchTree.prototype = {
 
               // se o valor atual é maior que o valor do pai, reseta o ponteiro da direita
               } else {
-                parent.right = (current.left === ? current.right : current.left);
+                parent.right = (current.left === null ? current.right : current.left);
               }
               break;
 
