@@ -137,7 +137,7 @@ BinarySearchTree.prototype = {
 
     // retorna apenas se o nó for encontrado
     return found;
-  }
+  },
 
   /**
    * Removes the node with the given value from the tree. This may require
