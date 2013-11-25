@@ -39,7 +39,7 @@ function insertionSort(items) {
     // armazena o valor atual, pois pode mudar depois
     value = items[i];
 
-    for (j = i - 1 > -1 && items[j] > value; j--) {
+    for (j = i - 1; j > -1 && items[j] > value; j--) {
       items[j + 1] = items[j];
     }
 
