@@ -27,3 +27,24 @@
  * @param {Array} items An array of items to sort.
  * @return {Array} The sorted array.
  */
+function insertionSort(items) {
+
+  var len      = items.length, // números de itens no array
+      value, // o valor atualmente sendo comparado
+      i, // indice na seção não ordenado
+      j; // indice na seção ordenada
+
+  for (i = 0; i < len; i++) {
+
+    // armazena o valor atual, pois pode mudar depois
+    value = items[i];
+
+    for (j = i - 1 > -1 && items[j] > value; j--) {
+      items[j + 1] = items[j];
+    }
+
+    items[j + 1] = value;
+  }
+
+  return items;
+}
