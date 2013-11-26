@@ -30,7 +30,7 @@
 function binarySearch(items, value) {
 
   var startIndex = 0,
-      stopIndex = items.length -1.
+      stopIndex = items.length -1,
       middle    = Math.floor((stopIndex + startIndex) / 2);
 
   while(items[middle] != value && startIndex < stopIndex) {
