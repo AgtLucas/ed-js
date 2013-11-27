@@ -28,3 +28,22 @@
  * @param {Array} right The second array to merge.
  * @return {Array} The merged array.
  */
+function merge(left, right) {
+  var result = [];
+
+  while (left.length > 0 && right.length > 0) {
+    if (left[0] < right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+
+  result = result.concat(left).concat(right);
+
+  // tenha certeza que o array restante é vazio
+  left.splice(0, left.length);
+  right.splice(0, right.length);
+
+  return result;
+}
