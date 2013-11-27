@@ -47,3 +47,35 @@ function merge(left, right) {
 
   return result;
 }
+
+/**
+ * Sorts an array in ascending natural order using
+ * merge sort.
+ * @param {Array} items The array to sort.
+ * @return {Array} The sorted array.
+ */
+function mergeSort(items) {
+
+  // não precisa fazer nada para arrays com 0 ou 1 item
+  if (items.length < 2) {
+    return items;
+  }
+
+  var work = [],
+      i,
+      len;
+
+  for (i = 0, len = items.length; i < len; i++) {
+    work.push([items[i]]);
+  }
+  work.push([]); // em caso de números estranhos de items
+
+  for (var lim = len; lim > 1; lim = Math.floor((lim + 1) / 2)) {
+    for (var j = 0; k < lim; j++, k += 2) {
+      work[j] = merge(work[k], work[k + 1]);
+    }
+    work[j] = [];
+  }
+
+  return work[0];
+}
