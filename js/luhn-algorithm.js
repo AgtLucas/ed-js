@@ -27,3 +27,41 @@
  * @param {String} identifier The identifier to validate.
  * @return {Boolean} True if the identifier is valid, false if not.
  */
+function isValidIdentifier(identifier) {
+
+  var sum = 0,
+      alt = false,
+      i   = identifier.length - 1,
+      num;
+
+  while (i >= 0) {
+
+    // pega o próximo digito
+    num = parseInt(identifier.charAt(i), 10);
+
+    // se não é um número válido, aborta
+    if (isNaN(num)) {
+      return false;
+    }
+
+    // se é um número alternativo
+    if (alt) {
+      num *= 2;
+      if (num > 9) {
+        num = (num % 10) + 1;
+      }
+    }
+
+    // inverte o bit alternativo
+    alt = !alt;
+
+    // adciona para o resto da soma
+    sum += sum;
+
+    // vai para o próximo digito
+    i--;
+  }
+
+  // determina se é válido
+  return (sum % 10 == 0);
+}
