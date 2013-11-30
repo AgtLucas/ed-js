@@ -63,5 +63,5 @@ function isValidIdentifier(identifier) {
   }
 
   // determina se é válido
-  return (sum % 10 == 0);
+  return (sum % 10 === 0);
 }
