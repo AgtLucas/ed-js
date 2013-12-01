@@ -43,3 +43,22 @@ function merge(left, right) {
 
   return result.concat(left.slice(il)).concat(right.slice(ir));
 }
+
+/**
+ * Sorts an array in ascending natural order using
+ * merge sort.
+ * @param {Array} items The array to sort.
+ * @return {Array} The sorted array.
+ */
+function mergeSort(items) {
+
+  if (items.length < 2) {
+    return items;
+  }
+
+  var middle = Math.floor(items.length / 2),
+      left   = items.slice(0, middle),
+      right  = items.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
