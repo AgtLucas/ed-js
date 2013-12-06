@@ -29,3 +29,8 @@
  * @param {int} secondIndex Index of second item to swap.
  * @return {void}
  */
+function swap(items, firstIndex, secondIndex) {
+  var temp = items[firstIndex];
+  items[firstIndex] = items[secondIndex];
+  items[secondIndex] = temp;
+}
